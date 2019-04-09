@@ -14,10 +14,15 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.common.io.BaseEncoding
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.reflect.KProperty0
 import kotlin.reflect.jvm.isAccessible
 
 // Extentions
+fun Date.format(fmt: String, locale: Locale = Locale.getDefault()): String
+    = SimpleDateFormat(fmt, locale).format(fmt)
+
 fun View.snackbar(txt: String, duration: Int)
         = Snackbar.make(this, txt, duration)
 
