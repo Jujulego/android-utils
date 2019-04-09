@@ -14,7 +14,7 @@ abstract class RecyclerHolder<T: Any>(val view: View) : RecyclerView.ViewHolder(
     abstract fun onBind(value: T?)
 
     // Méthodes
-    fun bind(value: T) {
+    fun bind(value: T?) {
         this.value = value
 
         onBind(value)

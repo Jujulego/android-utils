@@ -13,10 +13,20 @@ inline fun <reified T: DiffItem<T>, L: List<T>> autoNotify(initial: L) = AutoNot
 interface DiffItem<T: DiffItem<T>> {
     // Méthodes
     fun isSameItem(other: T): Boolean
-    fun isSameContent(other: T): Boolean
+    fun hasSameContent(other: T): Boolean
 }
 
 // Classes
+class DiffItemCallback<T: DiffItem<T>>: DiffUtil.ItemCallback<T>() {
+    override fun areItemsTheSame(old: T, new: T): Boolean {
+        return old.isSameItem(new)
+    }
+
+    override fun areContentsTheSame(old: T, new: T): Boolean {
+        return old.hasSameContent(new)
+    }
+}
+
 class ArrayDiffCallback<T: DiffItem<T>>(val olds: Array<T>, val news: Array<T>) : DiffUtil.Callback() {
     // Méthodes
     override fun getOldListSize() = olds.size
@@ -26,7 +36,7 @@ class ArrayDiffCallback<T: DiffItem<T>>(val olds: Array<T>, val news: Array<T>) 
         = olds[oldItemPosition].isSameItem(news[newItemPosition])
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int)
-        = olds[oldItemPosition].isSameContent(news[newItemPosition])
+        = olds[oldItemPosition].hasSameContent(news[newItemPosition])
 }
 class ListDiffCallback<T: DiffItem<T>>(val olds: List<T>, val news: List<T>) : DiffUtil.Callback() {
     // Méthodes
@@ -37,7 +47,7 @@ class ListDiffCallback<T: DiffItem<T>>(val olds: List<T>, val news: List<T>) : D
         = olds[oldItemPosition].isSameItem(news[newItemPosition])
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int)
-        = olds[oldItemPosition].isSameContent(news[newItemPosition])
+        = olds[oldItemPosition].hasSameContent(news[newItemPosition])
 }
 
 class AutoNotifyArrayProp<T: DiffItem<T>>(initial: Array<T>) : ReadWriteProperty<RecyclerView.Adapter<*>, Array<T>> {
