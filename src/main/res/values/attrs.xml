@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="SeekBarPreference">
+        <attr name="min" format="integer" />
+        <attr name="max" format="integer" />
+        <attr name="increment" format="integer" />
+
+        <attr name="adjustable" format="boolean" />
+        <attr name="showValue" format="boolean" />
+
         <attr name="format" format="string" />
     </declare-styleable>
 </resources>
