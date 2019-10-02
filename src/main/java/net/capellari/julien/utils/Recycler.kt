@@ -6,14 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 // Classes
 abstract class RecyclerHolder<T: Any>(val view: View) : RecyclerView.ViewHolder(view) {
-    // Attributs
+    // Attributes
     var value: T? = null
         private set
 
-    // Méthodes abstraites
+    // Abstract methods
     abstract fun onBind(value: T?)
 
-    // Méthodes
+    // Methods
     fun bind(value: T?) {
         this.value = value
 
@@ -22,11 +22,11 @@ abstract class RecyclerHolder<T: Any>(val view: View) : RecyclerView.ViewHolder(
 }
 
 abstract class RecyclerAdapter<T: Any, RH: RecyclerHolder<T>> : RecyclerView.Adapter<RH>() {
-    // Attributs
+    // Attributes
     abstract var items: Array<T>
     val observer = Observer<Array<T>>(::items::set)
 
-    // Méthodes
+    // Methods
     override fun getItemCount() = items.size
     override fun onBindViewHolder(holder: RH, position: Int) {
         holder.bind(items[position])

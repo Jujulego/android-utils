@@ -6,7 +6,7 @@ import java.lang.RuntimeException
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
-// Méthode
+// Delegates
 fun <T : Any> sharedPreference(name: String, default: T) = SharedPreference(name) { default }
 fun <T : Any> sharedPreference(name: String, default: () -> T) = SharedPreference(name, default)
 fun <T : Any> sharedPreference(name: String, context: Context, default: T) = ContextSharedPreference(context, name) { default }
@@ -53,13 +53,13 @@ abstract class BaseSharedPreference<R : Any, T : Any>(val name: String, val defa
 }
 
 class SharedPreference<T : Any>(name: String, default: () -> T) : BaseSharedPreference<Context,T>(name, default) {
-    // Opérateurs
-    override operator fun getValue(thisRef: Context, property: KProperty<*>): T        = get(thisRef)
-    override operator fun setValue(thisRef: Context, property: KProperty<*>, value: T) = set(thisRef, value)
+    // Methods
+    override fun getValue(thisRef: Context, property: KProperty<*>): T        = get(thisRef)
+    override fun setValue(thisRef: Context, property: KProperty<*>, value: T) = set(thisRef, value)
 }
 
 class ContextSharedPreference<T : Any>(val context: Context, name: String, default: () -> T) : BaseSharedPreference<Any,T>(name, default) {
-    // Opérateurs
-    override operator fun getValue(thisRef: Any, property: KProperty<*>): T        = get(context)
-    override operator fun setValue(thisRef: Any, property: KProperty<*>, value: T) = set(context, value)
+    // Methods
+    override fun getValue(thisRef: Any, property: KProperty<*>): T        = get(context)
+    override fun setValue(thisRef: Any, property: KProperty<*>, value: T) = set(context, value)
 }

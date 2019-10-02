@@ -10,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView
 import net.capellari.julien.R
 
 abstract class ListFragment : Fragment() {
-    // Attributs
+    // Attributes
     protected var recyclerView: RecyclerView? = null
 
-    // Méthodes
+    // Methods
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return layoutInflater.inflate(R.layout.list_fragment, container, false)
     }

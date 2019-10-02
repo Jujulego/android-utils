@@ -19,7 +19,7 @@ import java.util.*
 import kotlin.reflect.KProperty0
 import kotlin.reflect.jvm.isAccessible
 
-// Extentions
+// Extensions
 fun Date.format(fmt: String, locale: Locale = Locale.getDefault()): String
     = SimpleDateFormat(fmt, locale).format(fmt)
 

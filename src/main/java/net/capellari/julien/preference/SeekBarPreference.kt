@@ -29,7 +29,7 @@ class SeekBarPreference(context: Context, attrs: AttributeSet? = null,
     companion object {
         const val TAG = "SeekBarPreference"
 
-        // Classe
+        // Class
         private class SavedState : BaseSavedState {
             // Companion
             companion object {
@@ -37,12 +37,12 @@ class SeekBarPreference(context: Context, attrs: AttributeSet? = null,
                 val CREATOR = parcelableCreator { SavedState(it) }
             }
 
-            // Attributs
+            // Attributes
             var value: Int = 0
             var min:   Int = 0
             var max:   Int = 0
 
-            // Constructeurs
+            // Constructors
             constructor(source: Parcel): super(source) {
                 value = source.readInt()
                 min   = source.readInt()
@@ -51,7 +51,7 @@ class SeekBarPreference(context: Context, attrs: AttributeSet? = null,
 
             constructor(superState: Parcelable): super(superState)
 
-            // Méthodes
+            // Methods
             override fun writeToParcel(dest: Parcel, flags: Int) {
                 super.writeToParcel(dest, flags)
 
@@ -63,13 +63,13 @@ class SeekBarPreference(context: Context, attrs: AttributeSet? = null,
         }
     }
 
-    // Attributs
+    // Attributes
     var trackingTouch = false
 
     private lateinit var seekBar: SeekBar
     private var valueTxt: TextView? = null
 
-    // Propriétés
+    // Properties
     private var _value = 0
     var value: Int get() = _value
         set(value) {
@@ -231,7 +231,7 @@ class SeekBarPreference(context: Context, attrs: AttributeSet? = null,
         notifyChanged()
     }
 
-    // Méthodes
+    // Methods
     /**
      * Store the given value and persist it.
      */

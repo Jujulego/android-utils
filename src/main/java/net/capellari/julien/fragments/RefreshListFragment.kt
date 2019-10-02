@@ -12,11 +12,11 @@ import kotlinx.android.synthetic.main.refresh_list_fragment.view.*
 import net.capellari.julien.R
 
 abstract class RefreshListFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
-    // Attributs
+    // Attributes
     protected var recyclerView: RecyclerView? = null
     protected var swipeRefreshLayout: SwipeRefreshLayout? = null
 
-    // Méthodes
+    // Methods
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return layoutInflater.inflate(R.layout.refresh_list_fragment, container, false)
     }
